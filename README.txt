@@ -50,6 +50,9 @@ MS_Website/
 ├── css/
 │   └── style.css    # Styling and responsive design
 ├── js/
+│   ├── lang.js      # Language loading and translation logic
+│   ├── lang-ar.json # Arabic translations
+│   ├── lang-en.json # English translations
 │   └── main.js      # All logic + localStorage
 └── README.txt       # This file
 
@@ -78,4 +81,3 @@ Call Me
 Linkedin  : www.linkedin.com/in/malek-al-edresi
 Call      : +967-778888730
 Instagram : dde.mt
-
