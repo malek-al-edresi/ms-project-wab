@@ -26,17 +26,19 @@ const personalSummary = document.getElementById("personalSummary");
 function renderPersonalData() {
   const data = loadFromStorage("msPersonalData", null);
   if (!data) {
-    personalSummary.textContent = "لم يتم حفظ بيانات بعد.";
+    personalSummary.textContent = dict["k85"];
     return;
   }
   personalSummary.innerHTML = `
-    <strong>آخر بيانات محفوظة:</strong><br>
-    الاسم: ${data.fullName || "-"}<br>
-    نوع MS: ${data.msType || "-"}<br>
-    عدد النوبات: ${data.attackCount || "-"}<br>
-    مكان آخر نوبة: ${data.attackLocation || "-"}
+    <strong>${dict["k104"]}</strong><br>
+    ${dict["k105"]}: ${data.fullName || "-"}<br>
+    ${dict["k106"]}: ${data.msType || "-"}<br>
+    ${dict["k107"]}: ${data.attackCount || "-"}<br>
+    ${dict["k108"]}: ${data.attackLocation || "-"}
   `;
+
 }
+
 
 //
 if (personalForm) {
@@ -59,7 +61,7 @@ if (personalForm) {
 
     saveToStorage("msPersonalData", personalData);
     renderPersonalData();
-    alert("تم حفظ البيانات الشخصية على هذا الجهاز.");
+    alert(dict["k86"]);
   });
 }
 
@@ -74,7 +76,7 @@ function renderSymptoms() {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 3;
-    cell.textContent = "لا يوجد سجلات حتى الآن.";
+    cell.textContent = dict["k87"];
     row.appendChild(cell);
     symptomsTableBody.appendChild(row);
     return;
@@ -89,8 +91,9 @@ function renderSymptoms() {
       const notesCell = document.createElement("td");
 
       dateCell.textContent = entry.date;
+      const joiner = dict["k109"];
       symptomsCell.textContent =
-        entry.symptoms.length > 0 ? entry.symptoms.join("، ") : "لا توجد أعراض محددة";
+        entry.symptoms.length > 0 ? entry.symptoms.join(joiner) : dict["k89"];
       notesCell.textContent = entry.notes || "-";
 
       row.appendChild(dateCell);
@@ -119,7 +122,7 @@ if (symptomsForm) {
     saveToStorage("msSymptomsLogs", logs);
     renderSymptoms();
     symptomsForm.reset();
-    alert("تم حفظ السجل اليومي.");
+    alert(dict["k90"]);
   });
 }
 
@@ -134,7 +137,7 @@ function formatDate(date) {
 function renderInjectionInfo() {
   const lastDateStr = loadFromStorage("msLastInjectionDate", null);
   if (!lastDateStr) {
-    injectionInfo.textContent = "لم يتم حفظ تاريخ آخر جرعة بعد.";
+    injectionInfo.textContent = dict["k91"];
     return;
   }
   const lastDate = new Date(lastDateStr);
@@ -147,19 +150,17 @@ function renderInjectionInfo() {
   let statusMessage = "";
 
   if (diffDays > 0) {
-    statusMessage = `متبقي تقريبًا ${diffDays} يومًا على الجرعة القادمة.`;
+    statusMessage = getMsg("injectionFuture").replace("{days}", diffDays);
   } else if (diffDays === 0) {
-    statusMessage = "اليوم موعد الجرعة القادمة، يُنصح بالتواصل مع طبيبك.";
+    statusMessage = getMsg("injectionToday");
   } else {
-    statusMessage = `تجاوزت موعد الجرعة بحوالي ${Math.abs(
-      diffDays
-    )} يوم. يُنصح بمراجعة الطبيب في أقرب وقت.`;
+    statusMessage = getMsg("injectionPast").replace("{days}", Math.abs(diffDays));
   }
 
   injectionInfo.innerHTML = `
     <div>
-      <div>آخر جرعة كانت بتاريخ: <strong>${formatDate(lastDate)}</strong></div>
-      <div>الجرعة القادمة المتوقعة بتاريخ: <strong>${formatDate(nextDate)}</strong></div>
+      <div>${getMsg("injectionLastLabel")}: <strong>${formatDate(lastDate)}</strong></div>
+      <div>${getMsg("injectionNextLabel")}: <strong>${formatDate(nextDate)}</strong></div>
       <div>${statusMessage}</div>
     </div>
   `;
@@ -171,7 +172,7 @@ if (injectionForm) {
     const lastInjectionDate = document.getElementById("lastInjectionDate").value;
     saveToStorage("msLastInjectionDate", lastInjectionDate);
     renderInjectionInfo();
-    alert("تم حفظ تاريخ آخر جرعة وحساب الموعد القادم.");
+    alert(dict["k92"]);
   });
 }
 
@@ -190,11 +191,11 @@ function renderWater() {
   const count = loadFromStorage(getWaterKeyForToday(), 0);
   waterCountEl.textContent = count;
   if (count < 6) {
-    waterMessageEl.textContent = "حاول الوصول إلى 6–8 أكواب خلال اليوم للحفاظ على توازن السوائل في جسمك.";
+    waterMessageEl.textContent = dict["k93"];
   } else if (count <= 8) {
-    waterMessageEl.textContent = "أحسنت! أنت في النطاق المثالي اليوم.";
+    waterMessageEl.textContent = dict["k94"];
   } else {
-    waterMessageEl.textContent = "لا بأس من شرب المزيد، لكن انتبه لعدم المبالغة إن كان لديك مشاكل صحية معينة.";
+    waterMessageEl.textContent = dict["k95"];
   }
 }
 
@@ -217,14 +218,14 @@ const motivationText = document.getElementById("motivationText");
 const newQuoteBtn = document.getElementById("newQuoteBtn");
 
 const quotes = [
-  "أنت لست مرضك، أنت إنسان قوي يواجه تحديًا صعبًا.",
-  "كل يوم تستيقظ فيه وتقاوم، هو انتصار جديد يُضاف إلى رصيدك.",
-  "خذ الأمور خطوة بخطوة، فحتى المسافات الطويلة تُقطع بخطوات صغيرة.",
-  "من حقك أن تتعب، لكن لا تستسلم. الراحة جزء من الرحلة، وليست نهايتها.",
-  "هناك دائمًا شيء جميل يستحق أن تكمل لأجله، حتى لو كان صغيرًا.",
-  "اسأل المساعدة عندما تحتاجها، القوة الحقيقية في الاعتراف باحتياجنا للآخرين.",
-  "صحتك النفسية لا تقل أهمية عن صحتك الجسدية، اعتنِ بنفسك لطفًا.",
-  "حتى في الأيام الصعبة، وجودك بحد ذاته هدية لمن حولك.",
+  dict["k96"],
+  dict["k97"],
+  dict["k98"],
+  dict["k99"],
+  dict["k100"],
+  dict["k101"],
+  dict["k102"],
+  dict["k103"],
 ];
 
 function pickRandomQuote() {

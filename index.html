@@ -2,213 +2,180 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>منصة دعم مرضى التصلب المتعدد</title>
+  <title data-i18n="k80">منصة دعم مرضى التصلب المتعدد</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <select id="langSelect" class="lang-switch" style="margin:20px;">
+    <option value="ar" selected data-i18n="k36">العربية</option>
+    <option value="en">English</option>
+  </select>
   <header class="main-header">
     <div class="container header-content">
-      <h1>منصة دعم مرضى التصلب المتعدد (MS)</h1>
-      <p>متابعة الأعراض، التذكيرات، والنصائح اليومية في مكان واحد بسيط وآمن.</p>
+      <h1 id="title" data-i18n="k81">منصة دعم مرضى التصلب المتعدد (MS)</h1>
+      <p id="intro" data-i18n="k71">متابعة الأعراض، التذكيرات، والنصائح اليومية في مكان واحد بسيط وآمن.</p>
       <nav class="main-nav">
-        <a href="#personal-data">البيانات الشخصية</a>
-        <a href="#daily-log">السجل اليومي</a>
-        <a href="#reminders">التذكيرات</a>
-        <a href="#diet">النظام الغذائي</a>
-        <a href="#water">شرب الماء</a>
-        <a href="#lights">تأثير الأضواء</a>
-        <a href="#support">الدعم والتحفيز</a>
-        <a href="#links">روابط طبية مفيدة</a>
+        <a href="#personal-data" data-i18n="k22">البيانات الشخصية</a>
+        <a href="#daily-log" data-i18n="k31">السجل اليومي</a>
+        <a href="#reminders" data-i18n="k24">التذكيرات</a>
+        <a href="#diet" data-i18n="k38">النظام الغذائي</a>
+        <a href="#water" data-i18n="k63">شرب الماء</a>
+        <a href="#lights" data-i18n="k42">تأثير الأضواء</a>
+        <a href="#support" data-i18n="k27">الدعم والتحفيز</a>
+        <a href="#links" data-i18n="k57">روابط طبية مفيدة</a>
       </nav>
     </div>
   </header>
-
   <main class="container">
-    <!-- 1. قسم الدعم والتحفيز -->
     <section id="support" class="card">
-      <h2>الدعم والتحفيز</h2>
-      <p class="section-intro">
-        التصلب المتعدد رحلة طويلة، لكنها ليست رحلة وحدك. الدعم النفسي والمعنوي يساعد كثيرًا في التعايش مع المرض.
-      </p>
+      <h2 data-i18n="k27">الدعم والتحفيز</h2>
+      <p class="section-intro" data-i18n="k25">التصلب المتعدد رحلة طويلة، لكنها ليست رحلة وحدك. الدعم النفسي والمعنوي يساعد كثيرًا في التعايش مع المرض.</p>
       <div class="motivation-box">
-        <p id="motivationText">
-          كل خطوة صغيرة تقوم بها اليوم هي إنجاز حقيقي. ركّز على ما يمكنك فعله الآن، وليس على ما فقدته.
-        </p>
-        <button id="newQuoteBtn" class="btn-secondary">جملة تحفيزية جديدة</button>
+        <p id="motivationText" data-i18n="k70">كل خطوة صغيرة تقوم بها اليوم هي إنجاز حقيقي. ركّز على ما يمكنك فعله الآن، وليس على ما فقدته.</p>
+        <button id="newQuoteBtn" class="btn-secondary" data-i18n="k50">جملة تحفيزية جديدة</button>
       </div>
     </section>
-
-    <!-- 2. نموذج البيانات الشخصية -->
     <section id="personal-data" class="card">
-      <h2>البيانات الشخصية</h2>
-      <p class="section-intro">
-        أدخل بياناتك الأساسية ليتم حفظها على جهازك فقط، ولن يتم إرسالها لأي خادم.
-      </p>
+      <h2 data-i18n="k22">البيانات الشخصية</h2>
+      <p class="section-intro" data-i18n="k01">أدخل بياناتك الأساسية ليتم حفظها على جهازك فقط، ولن يتم إرسالها لأي خادم.</p>
       <form id="personalForm" class="form-grid">
         <div class="form-group">
-          <label for="fullName">الاسم الكامل</label>
+          <label for="fullName" data-i18n="k21">الاسم الكامل</label>
           <input type="text" id="fullName" required />
         </div>
         <div class="form-group">
-          <label for="msType">نوع التصلب المتعدد (MS)</label>
+          <label for="msType" data-i18n="k82">نوع التصلب المتعدد (MS)</label>
           <select id="msType" required>
-            <option value="">اختر النوع</option>
-            <option value="RRMS">متعدد الانتكاسات (RRMS)</option>
-            <option value="SPMS">ثانوي متقدم (SPMS)</option>
-            <option value="PPMS">أولي متقدم (PPMS)</option>
-            <option value="CIS">متلازمة سريرية معزولة (CIS)</option>
+            <option value="" data-i18n="k13">اختر النوع</option>
+            <option value="RRMS" data-i18n="k72">متعدد الانتكاسات (RRMS)</option>
+            <option value="SPMS" data-i18n="k49">ثانوي متقدم (SPMS)</option>
+            <option value="PPMS" data-i18n="k06">أولي متقدم (PPMS)</option>
+            <option value="CIS" data-i18n="k73">متلازمة سريرية معزولة (CIS)</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="attackCount">عدد النوبات حتى الآن</label>
+          <label for="attackCount" data-i18n="k67">عدد النوبات حتى الآن</label>
           <input type="number" id="attackCount" min="0" required />
         </div>
         <div class="form-group">
-          <label for="attackLocation">مكان آخر نوبة في الجسم</label>
-          <input type="text" id="attackLocation" placeholder="مثال: الساق اليمنى، العين اليسرى" />
+          <label for="attackLocation" data-i18n="k74">مكان آخر نوبة في الجسم</label>
+          <input type="text" id="attackLocation" placeholder="مثال: الساق اليمنى، العين اليسرى" data-i18n-placeholder="k83" />
         </div>
-        <button type="submit" class="btn-primary">حفظ البيانات</button>
+        <button type="submit" class="btn-primary" data-i18n="k52">حفظ البيانات</button>
       </form>
       <div id="personalSummary" class="summary-box"></div>
     </section>
-
-    <!-- 3. السجل اليومي للأعراض -->
     <section id="daily-log" class="card">
-      <h2>السجل اليومي للأعراض</h2>
-      <p class="section-intro">
-        اختر الأعراض التي شعرت بها اليوم ليتم حفظها في سجل يومي يمكنك الرجوع إليه مع طبيبك.
-      </p>
+      <h2 data-i18n="k32">السجل اليومي للأعراض</h2>
+      <p class="section-intro" data-i18n="k12">اختر الأعراض التي شعرت بها اليوم ليتم حفظها في سجل يومي يمكنك الرجوع إليه مع طبيبك.</p>
       <form id="symptomsForm" class="form-grid">
         <div class="form-group">
-          <label for="logDate">تاريخ اليوم</label>
+          <label for="logDate" data-i18n="k45">تاريخ اليوم</label>
           <input type="date" id="logDate" required />
         </div>
         <div class="symptoms-grid">
-          <label><input type="checkbox" value="فقدان توازن" /> فقدان توازن</label>
-          <label><input type="checkbox" value="دوخة" /> دوخة</label>
-          <label><input type="checkbox" value="إرهاق" /> إرهاق</label>
-          <label><input type="checkbox" value="ضعف بصري" /> ضعف بصري</label>
-          <label><input type="checkbox" value="خدر" /> خدر / تنميل</label>
+          <label><input type="checkbox" value="فقدان توازن" /><span data-i18n="k68">فقدان توازن</span></label>
+          <label><input type="checkbox" value="دوخة" /><span data-i18n="k56">دوخة</span></label>
+          <label><input type="checkbox" value="إرهاق" /><span data-i18n="k08">إرهاق</span></label>
+          <label><input type="checkbox" value="ضعف بصري" /><span data-i18n="k66">ضعف بصري</span></label>
+          <label><input type="checkbox" value="خدر" /><span data-i18n="k54">خدر / تنميل</span></label>
         </div>
         <div class="form-group full-width">
-          <label for="notes">ملاحظات إضافية</label>
-          <textarea id="notes" rows="3" placeholder="اكتب أي تفاصيل مهمة تود تذكرها لاحقاً"></textarea>
+          <label for="notes" data-i18n="k77">ملاحظات إضافية</label>
+          <textarea id="notes" rows="3" placeholder="اكتب أي تفاصيل مهمة تود تذكرها لاحقاً" data-i18n-placeholder="k84"></textarea>
         </div>
-        <button type="submit" class="btn-primary">إضافة للسجل</button>
+        <button type="submit" class="btn-primary" data-i18n="k10">إضافة للسجل</button>
       </form>
-
       <div class="table-wrapper">
         <table id="symptomsTable">
           <thead>
             <tr>
-              <th>التاريخ</th>
-              <th>الأعراض</th>
-              <th>ملاحظات</th>
+              <th data-i18n="k23">التاريخ</th>
+              <th data-i18n="k17">الأعراض</th>
+              <th data-i18n="k76">ملاحظات</th>
             </tr>
           </thead>
           <tbody>
-            <!-- يتم الملء ديناميكياً -->
           </tbody>
         </table>
       </div>
     </section>
-
-    <!-- 4. تذكير الحقن كل 6 أشهر -->
     <section id="reminders" class="card">
-      <h2>تذكير العلاج / الحقن كل 6 أشهر</h2>
-      <p class="section-intro">
-        أدخل تاريخ آخر جرعة علاج (مثل الحقن أو التسريب الوريدي)، وسيحسب النظام
-        موعد الجرعة التالية بعد 6 أشهر مع تنبيه تقريبي.
-      </p>
+      <h2 data-i18n="k46">تذكير العلاج / الحقن كل 6 أشهر</h2>
+      <p class="section-intro" data-i18n="k02">أدخل تاريخ آخر جرعة علاج (مثل الحقن أو التسريب الوريدي)، وسيحسب النظام
+        موعد الجرعة التالية بعد 6 أشهر مع تنبيه تقريبي.</p>
       <form id="injectionForm" class="form-inline">
         <div class="form-group">
-          <label for="lastInjectionDate">تاريخ آخر جرعة</label>
+          <label for="lastInjectionDate" data-i18n="k44">تاريخ آخر جرعة</label>
           <input type="date" id="lastInjectionDate" required />
         </div>
-        <button type="submit" class="btn-primary">حفظ وحساب الموعد القادم</button>
+        <button type="submit" class="btn-primary" data-i18n="k53">حفظ وحساب الموعد القادم</button>
       </form>
       <div id="injectionInfo" class="summary-box"></div>
     </section>
-
-    <!-- 5. النظام الغذائي -->
     <section id="diet" class="card">
-      <h2>النظام الغذائي المناسب لمرضى التصلب المتعدد</h2>
+      <h2 data-i18n="k39">النظام الغذائي المناسب لمرضى التصلب المتعدد</h2>
       <div class="diet-grid">
         <div class="diet-column good-foods">
-          <h3>أطعمة مفيدة</h3>
+          <h3 data-i18n="k04">أطعمة مفيدة</h3>
           <ul>
-            <li><strong>فواكه:</strong> التوت، البرتقال، التفاح، الكيوي</li>
-            <li><strong>خضروات:</strong> السبانخ، البروكلي، الجزر، الفلفل الملون</li>
-            <li><strong>أسماك دهنية:</strong> السلمون، السردين، الماكريل (مصدر للأوميغا 3)</li>
-            <li><strong>مكسرات:</strong> اللوز، الجوز، الكاجو، بذور الكتان والشيا</li>
-            <li><strong>حبوب كاملة:</strong> الشوفان، خبز القمح الكامل، الأرز البني</li>
-            <li><strong>زيوت صحية:</strong> زيت الزيتون، زيت الأفوكادو</li>
+            <li><strong data-i18n="k69">فواكه:</strong><span data-i18n="k26">التوت، البرتقال، التفاح، الكيوي</span></li>
+            <li><strong data-i18n="k55">خضروات:</strong><span data-i18n="k30">السبانخ، البروكلي، الجزر، الفلفل الملون</span></li>
+            <li><strong data-i18n="k03">أسماك دهنية:</strong><span data-i18n="k34">السلمون، السردين، الماكريل (مصدر للأوميغا 3)</span></li>
+            <li><strong data-i18n="k75">مكسرات:</strong><span data-i18n="k37">اللوز، الجوز، الكاجو، بذور الكتان والشيا</span></li>
+            <li><strong data-i18n="k51">حبوب كاملة:</strong><span data-i18n="k35">الشوفان، خبز القمح الكامل، الأرز البني</span></li>
+            <li><strong data-i18n="k62">زيوت صحية:</strong><span data-i18n="k61">زيت الزيتون، زيت الأفوكادو</span></li>
           </ul>
         </div>
         <div class="diet-column bad-foods">
-          <h3>أطعمة يُفضّل تجنبها</h3>
+          <h3 data-i18n="k05">أطعمة يُفضّل تجنبها</h3>
           <ul>
-            <li>الوجبات السريعة عالية الدهون المشبعة</li>
-            <li>الأطعمة المقلية (مثل البطاطس المقلية والدجاج المقلي)</li>
-            <li>السكريات المضافة بكثرة (المشروبات الغازية، الحلويات الصناعية)</li>
-            <li>الدهون المتحولة (المخبوزات التجارية، السناك غير الصحي)</li>
-            <li>الإفراط في تناول الملح</li>
+            <li data-i18n="k40">الوجبات السريعة عالية الدهون المشبعة</li>
+            <li data-i18n="k16">الأطعمة المقلية (مثل البطاطس المقلية والدجاج المقلي)</li>
+            <li data-i18n="k33">السكريات المضافة بكثرة (المشروبات الغازية، الحلويات الصناعية)</li>
+            <li data-i18n="k28">الدهون المتحولة (المخبوزات التجارية، السناك غير الصحي)</li>
+            <li data-i18n="k19">الإفراط في تناول الملح</li>
           </ul>
         </div>
       </div>
     </section>
-
-    <!-- 6. تذكير شرب الماء -->
     <section id="water" class="card">
-      <h2>تذكير شرب الماء (6–8 أكواب يوميًا)</h2>
-      <p class="section-intro">
-        شرب الماء مهم للحفاظ على طاقة الجسم وصحة الأعصاب. تتبع عدد الأكواب التي شربتها اليوم.
-      </p>
+      <h2 data-i18n="k47">تذكير شرب الماء (6–8 أكواب يوميًا)</h2>
+      <p class="section-intro" data-i18n="k64">شرب الماء مهم للحفاظ على طاقة الجسم وصحة الأعصاب. تتبع عدد الأكواب التي شربتها اليوم.</p>
       <div class="water-tracker">
         <div class="water-status">
-          <span>الأكواب اليوم:</span>
+          <span data-i18n="k18">الأكواب اليوم:</span>
           <strong id="waterCount">0</strong> / <span>8</span>
         </div>
         <div class="water-buttons">
-          <button id="addWater" class="btn-primary">إضافة كوب</button>
-          <button id="resetWater" class="btn-secondary">إعادة تعيين لليوم</button>
+          <button id="addWater" class="btn-primary" data-i18n="k09">إضافة كوب</button>
+          <button id="resetWater" class="btn-secondary" data-i18n="k11">إعادة تعيين لليوم</button>
         </div>
         <p id="waterMessage" class="helper-text"></p>
       </div>
     </section>
-
-    <!-- 7. تأثير الأضواء الساطعة -->
     <section id="lights" class="card">
-      <h2>تأثير الأضواء الساطعة على أعصاب مرضى التصلب المتعدد</h2>
-      <p>
-        بعض مرضى التصلب المتعدد لديهم حساسية عالية تجاه الأضواء الساطعة، خاصة الأضواء البيضاء القوية
-        أو الشاشات ذات السطوع العالي، مما قد يسبب:
-      </p>
+      <h2 data-i18n="k43">تأثير الأضواء الساطعة على أعصاب مرضى التصلب المتعدد</h2>
+      <p data-i18n="k41">بعض مرضى التصلب المتعدد لديهم حساسية عالية تجاه الأضواء الساطعة، خاصة الأضواء البيضاء القوية
+        أو الشاشات ذات السطوع العالي، مما قد يسبب:</p>
       <ul>
-        <li>زيادة الصداع أو الصداع النصفي</li>
-        <li>إجهاد بصري وشعور بعدم الراحة في العينين</li>
-        <li>زيادة الدوخة أو فقدان التوازن</li>
-        <li>صعوبة في التركيز</li>
+        <li data-i18n="k60">زيادة الصداع أو الصداع النصفي</li>
+        <li data-i18n="k07">إجهاد بصري وشعور بعدم الراحة في العينين</li>
+        <li data-i18n="k59">زيادة الدوخة أو فقدان التوازن</li>
+        <li data-i18n="k65">صعوبة في التركيز</li>
       </ul>
-      <p>
-        من النصائح المهمة:
-      </p>
+      <p data-i18n="k78">من النصائح المهمة:</p>
       <ul>
-        <li>تقليل سطوع شاشة الهاتف أو الكمبيوتر</li>
-        <li>استخدام الوضع الداكن (Dark Mode) عندما يكون متاحًا</li>
-        <li>الابتعاد عن الأضواء المباشرة والنيون القوي</li>
-        <li>استخدام نظارات بفلتر للضوء الأزرق عند الحاجة</li>
+        <li data-i18n="k48">تقليل سطوع شاشة الهاتف أو الكمبيوتر</li>
+        <li data-i18n="k14">استخدام الوضع الداكن (Dark Mode) عندما يكون متاحًا</li>
+        <li data-i18n="k20">الابتعاد عن الأضواء المباشرة والنيون القوي</li>
+        <li data-i18n="k15">استخدام نظارات بفلتر للضوء الأزرق عند الحاجة</li>
       </ul>
     </section>
-
-    
-    <!-- 9. الروابط الطبية -->
     <section id="links" class="card">
-      <h2>روابط طبية موثوقة عن التصلب المتعدد</h2>
-      <p class="section-intro">
-        الروابط التالية هي أمثلة لمصادر موثوقة حول التصلب المتعدد. يمكنك تعديلها لتطابق الروابط المطلوبة في ملف الـ PDF الخاص بالمقرر.
-      </p>
+      <h2 data-i18n="k58">روابط طبية موثوقة عن التصلب المتعدد</h2>
+      <p class="section-intro" data-i18n="k29">الروابط التالية هي أمثلة لمصادر موثوقة حول التصلب المتعدد. يمكنك تعديلها لتطابق الروابط المطلوبة في ملف الـ PDF الخاص بالمقرر.</p>
       <ol class="links-list">
         <li><a href="https://www.nationalmssociety.org/" target="_blank" rel="noopener">National Multiple Sclerosis Society</a></li>
         <li><a href="https://www.msfocus.org/" target="_blank" rel="noopener">MS Focus – Multiple Sclerosis Foundation</a></li>
@@ -223,13 +190,12 @@
       </ol>
     </section>
   </main>
-
   <footer class="main-footer">
     <div class="container">
-      <p>منصة تعليمية تجريبية لدعم مرضى التصلب المتعدد – لا تغني عن استشارة الطبيب المختص.</p>
+      <p data-i18n="k79">منصة تعليمية تجريبية لدعم مرضى التصلب المتعدد – لا تغني عن استشارة الطبيب المختص.</p>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
+  <script src="js/lang.js"></script>
 </body>
 </html>
