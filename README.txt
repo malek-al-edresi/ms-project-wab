@@ -76,8 +76,3 @@ dev by
 ------
 Eng.Malek Mohamed Al-Edresi
 
-Call Me  
--------
-Linkedin  : www.linkedin.com/in/malek-al-edresi
-Call      : +967-778888730
-Instagram : dde.mt
