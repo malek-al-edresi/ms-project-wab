@@ -356,6 +356,42 @@ tr:hover td {
   text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+.chatbot-section .chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.message {
+    margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.bot-message {
+    background: #f0f8f0;
+    text-align: right;
+}
+
+.user-message {
+    background: #e3f2fd;
+    text-align: left;
+}
+
+>>>>>>> 36bdc56 (update for adding chatbot)
 @media (max-width: 640px) {
   .header-content h1 {
     font-size: 1.4rem;
