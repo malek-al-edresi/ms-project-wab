@@ -81,10 +81,6 @@ function renderSymptoms() {
     symptomsTableBody.appendChild(row);
     return;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 36bdc56 (update for adding chatbot)
   logs
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .forEach((entry) => {
@@ -94,15 +90,9 @@ function renderSymptoms() {
       const notesCell = document.createElement("td");
 
       dateCell.textContent = entry.date;
-<<<<<<< HEAD
-      const joiner = dict["k109"];
-      symptomsCell.textContent =
-        entry.symptoms.length > 0 ? entry.symptoms.join(joiner) : dict["k89"];
-=======
       const joiner = dict["k109"] || ", "; // Use dict for joiner
       symptomsCell.textContent =
         entry.symptoms.length > 0 ? entry.symptoms.join(joiner) : (dict["k89"] || "No specific symptoms.");
->>>>>>> 36bdc56 (update for adding chatbot)
       notesCell.textContent = entry.notes || "-";
 
       row.appendChild(dateCell);
@@ -112,35 +102,6 @@ function renderSymptoms() {
     });
 }
 
-<<<<<<< HEAD
-if (symptomsForm) {
-  symptomsForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const date = document.getElementById("logDate").value;
-    const notes = document.getElementById("notes").value.trim();
-    const symptomCheckboxes = symptomsForm.querySelectorAll(
-      'input[type="checkbox"]:checked'
-    );
-    const symptoms = Array.from(symptomCheckboxes).map((c) => c.value);
-
-    const logs = loadFromStorage("msSymptomsLogs", []);
-    logs.push({
-      date,
-      symptoms,
-      notes,
-    });
-    saveToStorage("msSymptomsLogs", logs);
-    renderSymptoms();
-    symptomsForm.reset();
-    alert(dict["k90"]);
-  });
-}
-
-// 3. Injection reminder every 6 months
-const injectionForm = document.getElementById("injectionForm");
-const injectionInfo = document.getElementById("injectionInfo");
-
-=======
 function handleSymptomsFormSubmit(e) {
   e.preventDefault();
   const date = document.getElementById("logDate").value;
@@ -157,43 +118,22 @@ function handleSymptomsFormSubmit(e) {
 }
 
 // --- Functions for Injection Reminder ---
->>>>>>> 36bdc56 (update for adding chatbot)
 function formatDate(date) {
   return date.toISOString().split("T")[0];
 }
 
 function renderInjectionInfo() {
-<<<<<<< HEAD
-  const lastDateStr = loadFromStorage("msLastInjectionDate", null);
-  if (!lastDateStr) {
-    injectionInfo.textContent = dict["k91"];
-=======
   const injectionInfo = document.getElementById("injectionInfo");
   if (!injectionInfo) return; // Exit if element doesn't exist
 
   const lastDateStr = loadFromStorage("msLastInjectionDate", null);
   if (!lastDateStr) {
     injectionInfo.textContent = dict["k91"] || "No last injection date saved.";
->>>>>>> 36bdc56 (update for adding chatbot)
     return;
   }
   const lastDate = new Date(lastDateStr);
   const nextDate = new Date(lastDate);
   nextDate.setMonth(nextDate.getMonth() + 6);
-<<<<<<< HEAD
-
-  const today = new Date();
-  const diffMs = nextDate - today;
-  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-  let statusMessage = "";
-
-  if (diffDays > 0) {
-    statusMessage = getMsg("injectionFuture").replace("{days}", diffDays);
-  } else if (diffDays === 0) {
-    statusMessage = getMsg("injectionToday");
-  } else {
-    statusMessage = getMsg("injectionPast").replace("{days}", Math.abs(diffDays));
-=======
   const today = new Date();
   const diffMs = nextDate - today;
   const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
@@ -205,41 +145,17 @@ function renderInjectionInfo() {
     statusMessage = dict["injectionToday"] || "Next dose is today!";
   } else {
     statusMessage = (dict["injectionPast"] || "Next dose was {days} days ago.").replace("{days}", Math.abs(diffDays));
->>>>>>> 36bdc56 (update for adding chatbot)
   }
 
   injectionInfo.innerHTML = `
     <div>
-<<<<<<< HEAD
-      <div>${getMsg("injectionLastLabel")}: <strong>${formatDate(lastDate)}</strong></div>
-      <div>${getMsg("injectionNextLabel")}: <strong>${formatDate(nextDate)}</strong></div>
-=======
       <div>${dict["injectionLastLabel"] || "Last dose date"}: <strong>${formatDate(lastDate)}</strong></div>
       <div>${dict["injectionNextLabel"] || "Next dose date"}: <strong>${formatDate(nextDate)}</strong></div>
->>>>>>> 36bdc56 (update for adding chatbot)
       <div>${statusMessage}</div>
     </div>
   `;
 }
 
-<<<<<<< HEAD
-if (injectionForm) {
-  injectionForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const lastInjectionDate = document.getElementById("lastInjectionDate").value;
-    saveToStorage("msLastInjectionDate", lastInjectionDate);
-    renderInjectionInfo();
-    alert(dict["k92"]);
-  });
-}
-
-// 5. Water reminder
-const waterCountEl = document.getElementById("waterCount");
-const waterMessageEl = document.getElementById("waterMessage");
-const addWaterBtn = document.getElementById("addWater");
-const resetWaterBtn = document.getElementById("resetWater");
-
-=======
 function handleInjectionFormSubmit(e) {
   e.preventDefault();
   const lastInjectionDate = document.getElementById("lastInjectionDate").value;
@@ -249,73 +165,12 @@ function handleInjectionFormSubmit(e) {
 }
 
 // --- Functions for Water Reminder ---
->>>>>>> 36bdc56 (update for adding chatbot)
 function getWaterKeyForToday() {
   const today = new Date().toISOString().split("T")[0];
   return `msWater_${today}`;
 }
 
 function renderWater() {
-<<<<<<< HEAD
-  const count = loadFromStorage(getWaterKeyForToday(), 0);
-  waterCountEl.textContent = count;
-  if (count < 6) {
-    waterMessageEl.textContent = dict["k93"];
-  } else if (count <= 8) {
-    waterMessageEl.textContent = dict["k94"];
-  } else {
-    waterMessageEl.textContent = dict["k95"];
-  }
-}
-
-if (addWaterBtn && resetWaterBtn) {
-  addWaterBtn.addEventListener("click", () => {
-    let count = loadFromStorage(getWaterKeyForToday(), 0);
-    count += 1;
-    saveToStorage(getWaterKeyForToday(), count);
-    renderWater();
-  });
-
-  resetWaterBtn.addEventListener("click", () => {
-    saveToStorage(getWaterKeyForToday(), 0);
-    renderWater();
-  });
-}
-
-// 7. Motivation quotes
-const motivationText = document.getElementById("motivationText");
-const newQuoteBtn = document.getElementById("newQuoteBtn");
-
-const quotes = [
-  dict["k96"],
-  dict["k97"],
-  dict["k98"],
-  dict["k99"],
-  dict["k100"],
-  dict["k101"],
-  dict["k102"],
-  dict["k103"],
-];
-
-function pickRandomQuote() {
-  const index = Math.floor(Math.random() * quotes.length);
-  return quotes[index];
-}
-
-if (newQuoteBtn && motivationText) {
-  newQuoteBtn.addEventListener("click", () => {
-    motivationText.textContent = pickRandomQuote();
-  });
-}
-
-// Initial renders
-document.addEventListener("DOMContentLoaded", () => {
-  renderPersonalData();
-  renderSymptoms();
-  renderInjectionInfo();
-  renderWater();
-});
-=======
   const waterCountEl = document.getElementById("waterCount");
   const waterMessageEl = document.getElementById("waterMessage");
   if (!waterCountEl || !waterMessageEl) return; // Exit if elements don't exist
@@ -411,4 +266,3 @@ function attachEventListeners() {
 }
 
 
->>>>>>> 36bdc56 (update for adding chatbot)

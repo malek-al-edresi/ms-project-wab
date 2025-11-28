@@ -1,13 +1,10 @@
 {
-<<<<<<< HEAD
-=======
   "chatbot": {
     "title": "MS Assistant",
     "placeholder": "Describe your symptoms...",
     "send": "Send",
     "welcome": "Hello! How can I help you today?"
   },
->>>>>>> 36bdc56 (update for adding chatbot)
   "k01": "Enter your basic information so it is saved on your device only and not sent to any server.",
   "k02": "Enter the date of your last treatment dose (such as injection or IV infusion). The system will calculate the next dose date after 6 months with an approximate reminder.",
   "k03": "Fatty fish:",
