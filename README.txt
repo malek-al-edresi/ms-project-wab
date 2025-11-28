@@ -51,6 +51,7 @@ MS_Website/
 │   └── style.css    # Styling and responsive design
 ├── js/
 │   ├── lang.js      # Language loading and translation logic
+│   ├── chatbot.js   # Language loading and translation logic
 │   ├── lang-ar.json # Arabic translations
 │   ├── lang-en.json # English translations
 │   └── main.js      # All logic + localStorage
