@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-// js/main.js
-// --- Move all logic inside functions and use the global 'dict' object ---
-
->>>>>>> 36bdc56 (update for adding chatbot)
 // Helper to safely read/write JSON from localStorage
 function loadFromStorage(key, fallback) {
   try {
@@ -15,12 +9,8 @@ function loadFromStorage(key, fallback) {
   }
 }
 
-<<<<<<< HEAD
 
 // Save Storge For Bowores 
-=======
-// Save Storage For Browser
->>>>>>> 36bdc56 (update for adding chatbot)
 function saveToStorage(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
@@ -29,7 +19,6 @@ function saveToStorage(key, value) {
   }
 }
 
-<<<<<<< HEAD
 // 1. Personal data
 const personalForm = document.getElementById("personalForm");
 const personalSummary = document.getElementById("personalSummary");
@@ -82,63 +71,12 @@ const symptomsTableBody = document.querySelector("#symptomsTable tbody");
 
 function renderSymptoms() {
   const logs = loadFromStorage("msSymptomsLogs", []);
-=======
-// --- Functions for Personal Data ---
-function renderPersonalData() {
-  const data = loadFromStorage("msPersonalData", null);
-  const personalSummary = document.getElementById("personalSummary");
-  if (!personalSummary) return; // Exit if element doesn't exist
-
-  if (!data) {
-    personalSummary.textContent = dict["k85"] || "No data saved yet."; // Fallback to key or English
-    return;
-  }
-  personalSummary.innerHTML = `
-    <strong>${dict["k104"] || "Last saved data:"}</strong><br>
-    ${dict["k105"] || "Name"}: ${data.fullName || "-"}<br>
-    ${dict["k106"] || "MS type"}: ${data.msType || "-"}<br>
-    ${dict["k107"] || "Number of relapses"}: ${data.attackCount || "-"}<br>
-    ${dict["k108"] || "Last relapse location"}: ${data.attackLocation || "-"}
-  `;
-}
-
-function handlePersonalFormSubmit(e) {
-  e.preventDefault();
-  const fullName = document.getElementById("fullName").value.trim();
-  const msType = document.getElementById("msType").value;
-  const attackCount = document.getElementById("attackCount").value;
-  const attackLocation = document.getElementById("attackLocation").value.trim();
-
-  const personalData = {
-    fullName,
-    msType,
-    attackCount,
-    attackLocation,
-    updatedAt: new Date().toISOString(),
-  };
-
-  saveToStorage("msPersonalData", personalData);
-  renderPersonalData();
-  alert(dict["k86"] || "Personal data saved on this device."); // Use dict for alert message
-}
-
-// --- Functions for Symptoms Log ---
-function renderSymptoms() {
-  const logs = loadFromStorage("msSymptomsLogs", []);
-  const symptomsTableBody = document.querySelector("#symptomsTable tbody");
-  if (!symptomsTableBody) return; // Exit if element doesn't exist
-
->>>>>>> 36bdc56 (update for adding chatbot)
   symptomsTableBody.innerHTML = "";
   if (logs.length === 0) {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 3;
-<<<<<<< HEAD
     cell.textContent = dict["k87"];
-=======
-    cell.textContent = dict["k87"] || "No logs yet.";
->>>>>>> 36bdc56 (update for adding chatbot)
     row.appendChild(cell);
     symptomsTableBody.appendChild(row);
     return;

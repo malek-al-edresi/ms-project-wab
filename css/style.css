@@ -356,8 +356,6 @@ tr:hover td {
   text-align: center;
 }
 
-<<<<<<< HEAD
-=======
 .chatbot-section .chatbot {
     position: fixed;
     bottom: 20px;
@@ -391,7 +389,6 @@ tr:hover td {
     text-align: left;
 }
 
->>>>>>> 36bdc56 (update for adding chatbot)
 @media (max-width: 640px) {
   .header-content h1 {
     font-size: 1.4rem;
