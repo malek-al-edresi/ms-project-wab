@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <select id="langSelect" class="lang-switch" style="margin:20px;">
+    <select id="langSelect" class="lang-switch" style="margin:20px; z-index: 1000;">
       <option value="ar" selected data-i18n="k36">العربية</option>
       <option value="en">English</option>
     </select>
@@ -17,19 +17,20 @@
         <p id="intro" data-i18n="k71">متابعة الأعراض، التذكيرات، والنصائح
           اليومية في مكان واحد بسيط وآمن.</p>
         <nav class="main-nav">
-          <a href="#personal-data" data-i18n="k22">البيانات الشخصية</a>
-          <a href="#daily-log" data-i18n="k31">السجل اليومي</a>
-          <a href="#reminders" data-i18n="k24">التذكيرات</a>
-          <a href="#diet" data-i18n="k38">النظام الغذائي</a>
-          <a href="#water" data-i18n="k63">شرب الماء</a>
-          <a href="#lights" data-i18n="k42">تأثير الأضواء</a>
-          <a href="#support" data-i18n="k27">الدعم والتحفيز</a>
-          <a href="#links" data-i18n="k57">روابط طبية مفيدة</a>
+          <button type="button" class="nav-btn active" data-target="support" data-i18n="k27">الدعم والتحفيز</button>
+          <button type="button" class="nav-btn" data-target="personal-data" data-i18n="k22">البيانات الشخصية</button>
+          <button type="button" class="nav-btn" data-target="daily-log" data-i18n="k31">السجل اليومي</button>
+          <button type="button" class="nav-btn" data-target="reminders" data-i18n="k24">التذكيرات</button>
+          <button type="button" class="nav-btn" data-target="diet" data-i18n="k38">النظام الغذائي</button>
+          <button type="button" class="nav-btn" data-target="water" data-i18n="k63">شرب الماء</button>
+          <button type="button" class="nav-btn" data-target="lights" data-i18n="k42">تأثير الأضواء</button>
+          <button type="button" class="nav-btn" data-target="links" data-i18n="k57">روابط طبية مفيدة</button>
         </nav>
       </div>
     </header>
     <main class="container">
-      <section id="support" class="card">
+      <!-- Support Section -->
+      <section id="support" class="card active-section">
         <h2 data-i18n="k27">الدعم والتحفيز</h2>
         <p class="section-intro" data-i18n="k25">التصلب المتعدد رحلة طويلة،
           لكنها ليست رحلة وحدك. الدعم النفسي والمعنوي يساعد كثيرًا في التعايش مع
@@ -41,7 +42,9 @@
             تحفيزية جديدة</button>
         </div>
       </section>
-      <section id="personal-data" class="card">
+
+      <!-- Personal Data Section -->
+      <section id="personal-data" class="card hidden-section">
         <h2 data-i18n="k22">البيانات الشخصية</h2>
         <p class="section-intro" data-i18n="k01">أدخل بياناتك الأساسية ليتم
           حفظها على جهازك فقط، ولن يتم إرسالها لأي خادم.</p>
@@ -79,7 +82,9 @@
         </form>
         <div id="personalSummary" class="summary-box"></div>
       </section>
-      <section id="daily-log" class="card">
+
+      <!-- Daily Log Section -->
+      <section id="daily-log" class="card hidden-section">
         <h2 data-i18n="k32">السجل اليومي للأعراض</h2>
         <p class="section-intro" data-i18n="k12">اختر الأعراض التي شعرت بها
           اليوم ليتم حفظها في سجل يومي يمكنك الرجوع إليه مع طبيبك.</p>
@@ -123,7 +128,9 @@
           </table>
         </div>
       </section>
-      <section id="reminders" class="card">
+
+      <!-- Reminders Section -->
+      <section id="reminders" class="card hidden-section">
         <h2 data-i18n="k46">تذكير العلاج / الحقن كل 6 أشهر</h2>
         <p class="section-intro" data-i18n="k02">أدخل تاريخ آخر جرعة علاج (مثل
           الحقن أو التسريب الوريدي)، وسيحسب النظام
@@ -139,7 +146,9 @@
         </form>
         <div id="injectionInfo" class="summary-box"></div>
       </section>
-      <section id="diet" class="card">
+
+      <!-- Diet Section -->
+      <section id="diet" class="card hidden-section">
         <h2 data-i18n="k39">النظام الغذائي المناسب لمرضى التصلب المتعدد</h2>
         <div class="diet-grid">
           <div class="diet-column good-foods">
@@ -178,7 +187,9 @@
           </div>
         </div>
       </section>
-      <section id="water" class="card">
+
+      <!-- Water Section -->
+      <section id="water" class="card hidden-section">
         <h2 data-i18n="k47">تذكير شرب الماء (6–8 أكواب يوميًا)</h2>
         <p class="section-intro" data-i18n="k64">شرب الماء مهم للحفاظ على طاقة
           الجسم وصحة الأعصاب. تتبع عدد الأكواب التي شربتها اليوم.</p>
@@ -196,7 +207,9 @@
           <p id="waterMessage" class="helper-text"></p>
         </div>
       </section>
-      <section id="lights" class="card">
+
+      <!-- Lights Section -->
+      <section id="lights" class="card hidden-section">
         <h2 data-i18n="k43">تأثير الأضواء الساطعة على أعصاب مرضى التصلب
           المتعدد</h2>
         <p data-i18n="k41">بعض مرضى التصلب المتعدد لديهم حساسية عالية تجاه
@@ -217,45 +230,48 @@
           <li data-i18n="k15">استخدام نظارات بفلتر للضوء الأزرق عند الحاجة</li>
         </ul>
       </section>
-      <section id="links" class="card">
+
+      <!-- Links Section -->
+      <section id="links" class="card hidden-section">
         <h2 data-i18n="k58">روابط طبية موثوقة عن التصلب المتعدد</h2>
         <p class="section-intro" data-i18n="k29">الروابط التالية هي أمثلة لمصادر
           موثوقة حول التصلب المتعدد. يمكنك تعديلها لتطابق الروابط المطلوبة في
           ملف الـ PDF الخاص بالمقرر.</p>
         <ol class="links-list">
-          <li><a href="https://www.nationalmssociety.org/  " target="_blank"
+          <li><a href="https://www.nationalmssociety.org/" target="_blank"
               rel="noopener">National Multiple Sclerosis Society</a></li>
-          <li><a href="https://www.msfocus.org/  " target="_blank"
+          <li><a href="https://www.msfocus.org/" target="_blank"
               rel="noopener">MS Focus – Multiple Sclerosis Foundation</a></li>
-          <li><a href="https://www.mssociety.org.uk/  " target="_blank"
+          <li><a href="https://www.mssociety.org.uk/" target="_blank"
               rel="noopener">MS Society UK</a></li>
           <li><a
-              href="https://www.who.int/news-room/fact-sheets/detail/multiple-sclerosis  "
+              href="https://www.who.int/news-room/fact-sheets/detail/multiple-sclerosis"
               target="_blank" rel="noopener">WHO – Multiple Sclerosis</a></li>
           <li><a
-              href="https://www.mayoclinic.org/diseases-conditions/multiple-sclerosis  "
+              href="https://www.mayoclinic.org/diseases-conditions/multiple-sclerosis"
               target="_blank" rel="noopener">Mayo Clinic – Multiple
               Sclerosis</a></li>
-          <li><a href="https://www.nhs.uk/conditions/multiple-sclerosis/  "
-              target="_blank" rel="noopener">NHS – Multiple Sclerosis</a></li>
-          <li><a href="https://www.msif.org/  " target="_blank" rel="noopener">MS
+          <li><a href="https://www.nhs.uk/conditions/multiple-sclerosis/" target="_blank"
+              rel="noopener">NHS – Multiple Sclerosis</a></li>
+          <li><a href="https://www.msif.org/" target="_blank" rel="noopener">MS
               International Federation</a></li>
-          <li><a href="https://www.webmd.com/multiple-sclerosis/default.htm  "
+          <li><a href="https://www.webmd.com/multiple-sclerosis/default.htm"
               target="_blank" rel="noopener">WebMD – Multiple Sclerosis</a></li>
-          <li><a href="https://emedicine.medscape.com/article/1146199-overview  "
+          <li><a href="https://emedicine.medscape.com/article/1146199-overview"
               target="_blank" rel="noopener">Medscape – Multiple Sclerosis
               Overview</a></li>
-          <li><a href="https://www.healthline.com/health/multiple-sclerosis  "
+          <li><a href="https://www.healthline.com/health/multiple-sclerosis"
               target="_blank" rel="noopener">Healthline – Multiple
               Sclerosis</a></li>
         </ol>
       </section>
-      <!-- تم تغيير id القسم من "chatbot" إلى "ms-chatbot" -->
+
+      <!-- Chatbot Section -->
       <section id="ms-chatbot" class="chatbot-section">
         <div class="chatbot">
           <div class="chat-header">
             <h3 data-i18n="chatbot.title">مساعد التصلب المتعدد</h3>
-            <button onclick="toggleChat()" >✕</button>
+            <button onclick="toggleChat()">✕</button>
           </div>
           <div class="chat-messages" id="chatMessages">
             <div class="message bot-message" data-i18n="chatbot.welcome">

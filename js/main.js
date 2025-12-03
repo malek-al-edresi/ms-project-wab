@@ -9,8 +9,7 @@ function loadFromStorage(key, fallback) {
   }
 }
 
-
-// Save Storge For Bowores 
+// Save Storage For Browser
 function saveToStorage(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
@@ -36,33 +35,26 @@ function renderPersonalData() {
     ${dict["k107"]}: ${data.attackCount || "-"}<br>
     ${dict["k108"]}: ${data.attackLocation || "-"}
   `;
-
 }
 
+function handlePersonalFormSubmit(e) {
+  e.preventDefault();
+  const fullName = document.getElementById("fullName").value.trim();
+  const msType = document.getElementById("msType").value;
+  const attackCount = document.getElementById("attackCount").value;
+  const attackLocation = document.getElementById("attackLocation").value.trim();
 
-//
-if (personalForm) {
-  personalForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const fullName = document.getElementById("fullName").value.trim();
-    const msType = document.getElementById("msType").value;
-    const attackCount = document.getElementById("attackCount").value;
-    const attackLocation = document
-      .getElementById("attackLocation")
-      .value.trim();
+  const personalData = {
+    fullName,
+    msType,
+    attackCount,
+    attackLocation,
+    updatedAt: new Date().toISOString(),
+  };
 
-    const personalData = {
-      fullName,
-      msType,
-      attackCount,
-      attackLocation,
-      updatedAt: new Date().toISOString(),
-    };
-
-    saveToStorage("msPersonalData", personalData);
-    renderPersonalData();
-    alert(dict["k86"]);
-  });
+  saveToStorage("msPersonalData", personalData);
+  renderPersonalData();
+  alert(dict["k86"]);
 }
 
 // 2. Daily symptoms log
@@ -227,6 +219,47 @@ function handleNewQuoteClick() {
   updateMotivationQuote();
 }
 
+// --- Function to Handle Tab Navigation ---
+function attachNavigationListeners() {
+  const navButtons = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('.card[id]'); // Only select cards with an id attribute
+
+  // Function to show the selected section and hide others
+  function showSection(targetId) {
+    sections.forEach(section => {
+      if (section.id === targetId) {
+        section.classList.remove('hidden-section');
+        section.classList.add('active-section');
+      } else {
+        section.classList.remove('active-section');
+        section.classList.add('hidden-section');
+      }
+    });
+
+    // Update active button state
+    navButtons.forEach(button => {
+      if (button.getAttribute('data-target') === targetId) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
+    });
+  }
+
+  // Add click event listeners to navigation buttons
+  navButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      showSection(targetId);
+    });
+  });
+
+  // Show the first section by default (e.g., 'support') if no section is active
+  if (!sections.length || !document.querySelector('.active-section')) {
+    showSection('support'); // أو أي معرف تريده كافتراضي
+  }
+}
+
 // --- Function to Attach All Event Listeners ---
 function attachEventListeners() {
   const personalForm = document.getElementById("personalForm");
@@ -265,4 +298,13 @@ function attachEventListeners() {
   }
 }
 
-
+// --- Initialize the application when the DOM is fully loaded ---
+document.addEventListener('DOMContentLoaded', function() {
+  renderPersonalData();
+  renderSymptoms();
+  renderInjectionInfo();
+  renderWater();
+  updateMotivationQuote(); // Set initial quote
+  attachEventListeners(); // Attach form, button, etc. listeners
+  attachNavigationListeners(); // Attach navigation (tab switching) listeners
+});
